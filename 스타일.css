@@ -91,6 +91,7 @@
   --진행막대그늘: inset 0 2px 4px rgba(190, 120, 160, .2);
 
   /* 젤리 버튼 */
+  --젤리글자: #ffffff;
   --젤리글자그림자: rgba(150, 40, 95, .45);
   --젤리광택: linear-gradient(180deg, rgba(255, 255, 255, .88), rgba(255, 255, 255, 0));
   --젤리핑크바탕: linear-gradient(180deg, #ffb3d9 0%, #ff74b4 48%, var(--진핑크) 100%);
@@ -237,6 +238,7 @@
   --진행막대안바탕: linear-gradient(180deg, #e0a0c4, var(--진핑크));
   --진행막대그늘: inset 0 2px 4px rgba(0, 0, 0, .35);
 
+  --젤리글자: #ffffff;
   --젤리글자그림자: rgba(20, 10, 30, .5);
   --젤리광택: linear-gradient(180deg, rgba(255, 255, 255, .4), rgba(255, 255, 255, 0));
   --젤리핑크바탕: linear-gradient(180deg, #d98cb4 0%, #be6391 48%, #9c4570 100%);
@@ -294,6 +296,142 @@
   --오류바탕: #452a30;
   --오류테두리: #a35b5b;
   --오류글자: #f3b9b9;
+}
+
+/*
+ * 베이직 모드. 색도 그림도 없는 차림이다.
+ *
+ * 흰색·회색·검정만 쓴다. 그라데이션과 광택은 단색으로, 그림자는 none 으로,
+ * 무늬는 모두 지우고, 글꼴은 시스템 기본 글꼴로 바꾼다.
+ * 변수로 못 끄는 것(장식 요소 감추기·광택 겹·점선 테두리 따위)은
+ * 파일 아래쪽 "베이직 모드 손질" 묶음에 모아 두었다.
+ *
+ * 그림자 변수는 쓰이는 자리를 보고 값을 고른다.
+ *   · box-shadow 를 통째로 담은 변수      → none
+ *   · 규칙에 거리가 적혀 있고 색만 담은 것 → transparent
+ *   · 다른 그림자와 쉼표로 이어 쓰는 것    → 0 0 0 0 transparent (none 은 여기서 못 쓴다)
+ */
+:root.베이직 {
+  /* 분홍·하늘·라벤더 자리에는 모두 회색이 들어간다. 테두리로 쓰이는 색이다. */
+  --핑크: #8c8c8c;
+  --진핑크: #595959;
+  --더진핑크: #595959;
+  --연핑크: #e6e6e6;
+  --아주연핑크: #f7f7f7;
+  --하늘: #8c8c8c;
+  --진하늘: #595959;
+  --더진하늘: #595959;
+  --연하늘: #f2f2f2;
+  --라벤더: #8c8c8c;
+  --진라벤더: #595959;
+  --더진라벤더: #1a1a1a;
+  --글자: #1a1a1a;
+  --보조글자: #595959;
+  --지브라검정: #8c8c8c;   /* 무늬는 껐지만 카드 테두리 색으로 그대로 쓴다 */
+  --지브라흰: #ffffff;
+
+  --핑크글자: #1a1a1a;
+  --하늘글자: #333333;
+
+  --몸배경: #f2f2f2;
+  --창바탕: #ffffff;
+  --창테두리광: transparent;
+  --창그림자: 0 0 0 0 transparent;
+  --종이: #ffffff;
+  --종이줄: transparent;
+  --종이여백선: transparent;
+  --카드그림자: none;
+  --말풍선바탕: #ffffff;
+  --말풍선그림자: transparent;
+  --읽는법그림자: none;
+
+  --제목줄바탕: #f2f2f2;
+  --제목줄글자: #1a1a1a;
+  --제목줄글자그림자: transparent;
+  --제목줄광택: none;
+  --창버튼바탕: #ffffff;
+  --창버튼글자: #333333;
+  --창버튼그늘: none;
+  --창버튼눌림그늘: none;
+  --도구줄바탕: #ffffff;
+  --도구버튼테두리: #c4c4c4;
+  --상태줄바탕: #f2f2f2;
+  --상태줄글자: #333333;
+  --꼬리말글자: #595959;
+  --제목글자그림자: none;
+
+  --한자색: #000000;        /* 화면에서 가장 진한 것이 한자다 */
+  --한자그림자: none;
+  --훈음바탕: #ffffff;
+  --훈음글자: #1a1a1a;
+  --스프링바탕: #ffffff;    /* 스프링 링은 감췄지만 변수는 짝을 맞춰 둔다 */
+  --스프링테두리: #c4c4c4;
+  --스프링그림자: none;
+  --진행막대바탕: #ffffff;
+  --진행막대안바탕: #1a1a1a;
+  --진행막대그늘: none;
+
+  /*
+   * 버튼은 평평한 흰 바탕 + 회색 테두리다.
+   * .젤리 는 border: none 이라 테두리를 inset 그림자로 그린다.
+   * 네 색깔(핑크·하늘·라벤더·하양)이 모두 같은 모양이 된다.
+   */
+  --젤리글자: #1a1a1a;
+  --젤리글자그림자: transparent;
+  --젤리광택: none;
+  --젤리핑크바탕: #ffffff;
+  --젤리핑크그늘: inset 0 0 0 2px #8c8c8c;
+  --젤리핑크눌림: inset 0 0 0 2px #1a1a1a;
+  --젤리하늘바탕: #ffffff;
+  --젤리하늘그늘: inset 0 0 0 2px #8c8c8c;
+  --젤리하늘눌림: inset 0 0 0 2px #1a1a1a;
+  --젤리하늘글자그림자: transparent;
+  --젤리라벤더바탕: #ffffff;
+  --젤리라벤더그늘: inset 0 0 0 2px #8c8c8c;
+  --젤리라벤더눌림: inset 0 0 0 2px #1a1a1a;
+  --젤리라벤더글자그림자: transparent;
+  --젤리하양바탕: #ffffff;
+  --젤리하양글자: #1a1a1a;
+  --젤리하양그늘: inset 0 0 0 2px #8c8c8c;
+  --젤리하양눌림: inset 0 0 0 2px #1a1a1a;
+  --토글끔바탕: #ffffff;
+  --토글끔글자: #595959;
+  --토글끔그늘: inset 0 0 0 2px #c4c4c4;
+  --토글끔눌림: inset 0 0 0 2px #8c8c8c;
+  --토글못씀바탕: #f2f2f2;
+  --토글못씀글자: #8c8c8c;
+  --토글못씀그늘: inset 0 0 0 2px #e0e0e0;
+
+  /*
+   * 켜진 토글만 검정 바탕 + 흰 글씨다.
+   * 낮·밤 모드에서는 젤리 색깔 클래스가 켜짐을 나타내므로 이 변수를 쓰는 규칙이
+   * 베이직 모드에만 있다. 그래서 낮·밤 쪽에 짝을 적지 않는다.
+   * (규칙이 :root.베이직 안에서만 켜지니 다른 모드에서 혼자 튀어나올 일이 없다.)
+   */
+  --토글켬바탕: #1a1a1a;
+  --토글켬글자: #ffffff;
+  --토글켬그늘: inset 0 0 0 2px #1a1a1a;
+
+  --반짝이빛: none;
+  --반짝이진하기: 1;
+  --사진밝기: 1;
+  --쪽지바탕: #ffffff;
+  --쪽지테두리: #8c8c8c;
+  --쪽지그림자: none;
+  --도움말그림자: none;
+  --오류바탕: #ffffff;
+  --오류테두리: #595959;
+  --오류글자: #1a1a1a;
+
+  /* 손글씨체를 빼고 시스템 기본 글꼴만 쓴다. 바깥에서 글꼴을 받아 오지 않는다. */
+  --손글씨: system-ui, -apple-system, "Segoe UI", "Apple SD Gothic Neo", "Malgun Gothic", "맑은 고딕", sans-serif;
+  --또박손글씨: system-ui, -apple-system, "Segoe UI", "Apple SD Gothic Neo", "Malgun Gothic", "맑은 고딕", sans-serif;
+  /* 한자·가나는 일본어 글꼴이 먼저 와야 글자 모양이 맞는다. 모두 시스템 글꼴이다. */
+  --둥근일본어: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", system-ui, sans-serif;
+
+  /* 무늬 없음 */
+  --지브라무늬: none;
+  --가는지브라무늬: none;
 }
 
 * { box-sizing: border-box; }
@@ -539,7 +677,7 @@ body {
   padding: 12px 20px;
   border: none;
   border-radius: 999px;
-  color: #ffffff;
+  color: var(--젤리글자);
   font-family: var(--손글씨);
   font-size: 1.05rem;
   line-height: 1.2;
@@ -968,10 +1106,80 @@ body {
   text-align: center;
 }
 
+/* ── 베이직 모드 손질 ─────────────────────────────── */
+
+/*
+ * 색은 :root.베이직 의 변수가 다 바꿨다. 여기 모은 것은 변수로는 못 끄는 것들이다.
+ *   · 장식 요소 감추기 (강아지·반짝이·스프링·이모지)
+ *   · 광택 겹과 말풍선 꼬리 (::before / ::after)
+ *   · 점선 테두리 → 실선
+ *   · 줄노트 무늬와 눌림 애니메이션
+ * 규칙을 덮어쓰는 묶음이므로 반드시 원래 규칙보다 뒤에 있어야 한다.
+ */
+
+/* 그림과 이모지 장식은 통째로 감춘다. 글자 사이에 섞인 이모지는 .글자장식 으로 싸 두었다. */
+:root.베이직 .반짝이층,
+:root.베이직 .지브라줄,
+:root.베이직 .제목줄아이콘,
+:root.베이직 .도구아이콘,
+:root.베이직 .리본강아지,
+:root.베이직 .스프링,
+:root.베이직 .종이장식,
+:root.베이직 .완료이모지,
+:root.베이직 .글자장식 { display: none; }
+
+/* 광택 하이라이트와 말풍선 꼬리. 말풍선은 꼬리 없는 회색 테두리 박스가 된다. */
+:root.베이직 .제목줄::before,
+:root.베이직 .젤리::before,
+:root.베이직 .말풍선::before,
+:root.베이직 .말풍선::after { display: none; }
+
+/* 점선은 모두 실선으로 */
+:root.베이직 .도구줄 { border-bottom-style: solid; }
+:root.베이직 .확인판 { border-style: solid; }
+:root.베이직 .훈음 { border-style: solid; }
+:root.베이직 .젤리:focus-visible { outline-style: solid; }
+
+/* 무늬 없는 평평한 면. 스프링을 감췄으니 위 여백도 줄인다. */
+:root.베이직 .다이어리 { background-image: none; padding-top: 20px; }
+:root.베이직 .다이어리바깥 { padding: 2px; }
+
+/* 둥근 젤리 대신 각진 박스 */
+:root.베이직 .젤리 { border-radius: 8px; }
+:root.베이직 .말풍선 { border-radius: 6px; border-width: 2px; }
+:root.베이직 .진행막대, :root.베이직 .진행막대안 { border-radius: 0; }
+
+/* 그림자가 없으니 눌릴 때 내려가면 허공에서 움직이는 것처럼 보인다. */
+:root.베이직 .젤리:active,
+:root.베이직 .창버튼:active,
+:root.베이직 .도구버튼:active { transform: none; }
+
+/* 강아지가 없으니 밤 모드의 뿔 자리를 비워 둘 필요가 없다. */
+:root.베이직 .인사줄 { margin-top: 10px; }
+
+/* 색이 없는 화면에서는 한자가 가장 눈에 띄어야 한다. */
+:root.베이직 .한자 { font-size: 4rem; }
+
+/*
+ * 켜진 토글만 검정 바탕 + 흰 글씨다.
+ * 낮·밤 모드는 젤리 색깔 클래스가 켜짐을 나타내므로 이 규칙이 필요 없다.
+ */
+:root.베이직 .토글[aria-pressed="true"] {
+  background: var(--토글켬바탕);
+  color: var(--토글켬글자);
+  box-shadow: var(--토글켬그늘);
+}
+
+:root.베이직 .토글[aria-pressed="true"]:active { box-shadow: var(--토글켬그늘); }
+
+/* ── 화면 크기에 따라 ─────────────────────────────── */
+
 /* 넓은 화면에서는 글자를 살짝 키운다 */
 @media (min-width: 540px) {
   body { padding-top: 26px; }
   .한자 { font-size: 4rem; }
+  /* 베이직 규칙이 명시도가 높아 위 .한자 를 덮으므로 여기서도 한 번 더 키워 준다. */
+  :root.베이직 .한자 { font-size: 4.6rem; }
   .제목줄제목 { font-size: 1.2rem; }
 }
 

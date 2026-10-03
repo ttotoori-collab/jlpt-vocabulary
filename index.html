@@ -32,7 +32,7 @@
   <!-- 제목 표시줄 -->
   <div class="제목줄">
     <span class="제목줄아이콘" aria-hidden="true">💖</span>
-    <h1 class="제목줄제목">일본어 단어장 ♡ JLPT</h1>
+    <h1 class="제목줄제목">일본어 단어장 <span class="글자장식" aria-hidden="true">♡</span> JLPT</h1>
     <div class="창버튼들">
       <button type="button" class="창버튼" id="최소화버튼" aria-label="창 접기" title="접기">─</button>
       <button type="button" class="창버튼" id="닫기버튼" aria-label="닫기" title="닫기">✕</button>
@@ -56,8 +56,13 @@
     <button type="button" class="도구버튼" id="도움말버튼" aria-expanded="false">
       <span class="도구아이콘" aria-hidden="true">❔</span><span class="도구이름">도움말</span>
     </button>
-    <button type="button" class="도구버튼" id="밤모드버튼" aria-pressed="false" title="밤 모드">
-      <span class="도구아이콘" id="밤모드아이콘" aria-hidden="true">🌙</span><span class="도구이름" id="밤모드이름">밤 모드</span>
+    <!--
+      테마 버튼 하나로 기본 → 밤 → 베이직 순서를 돈다.
+      아이콘과 이름은 꾸미기.js 의 테마입히기() 가 "지금 모드" 로 채운다.
+      모드가 셋이라 aria-pressed 로는 못 담아서 aria-label 에 글로 적는다.
+    -->
+    <button type="button" class="도구버튼" id="테마버튼">
+      <span class="도구아이콘" id="테마아이콘" aria-hidden="true">☀️</span><span class="도구이름" id="테마이름">기본</span>
     </button>
   </div>
 
@@ -71,12 +76,12 @@
     <section class="말풍선 도움말" id="도움말" hidden>
       <p><b>히라가나</b> · <b>훈음</b> · <b>뜻</b> 버튼으로 보고 싶은 것만 켜요.</p>
       <p><b>알고있음</b> 을 누른 단어는 다음 회차에서 빠지고, <b>공부하겠음</b> 을 누른 단어만 다시 나와요.</p>
-      <p>기록은 이 브라우저에 저장되니까 새로고침해도 괜찮아요. 🎀</p>
+      <p>기록은 이 브라우저에 저장되니까 새로고침해도 괜찮아요.<span class="글자장식" aria-hidden="true"> 🎀</span></p>
     </section>
 
     <!-- 초기화 확인 -->
     <section class="확인판" id="확인판" hidden>
-      <p class="확인글">기록을 지울까요? 되돌릴 수 없어요 🥺</p>
+      <p class="확인글">기록을 지울까요? 되돌릴 수 없어요<span class="글자장식" aria-hidden="true"> 🥺</span></p>
       <div class="확인버튼줄">
         <button type="button" class="젤리 작은젤리 핑크" id="이급수초기화버튼">이 급수만</button>
         <button type="button" class="젤리 작은젤리 라벤더" id="전체초기화버튼">전체 다</button>
@@ -107,7 +112,7 @@
 
         <div class="말풍선 인사말풍선 왼꼬리">
           <h2 class="급수제목" id="급수제목">급수를 골라 주세요</h2>
-          <p class="작은안내">모르는 단어만 계속 돌아와요 💫</p>
+          <p class="작은안내">모르는 단어만 계속 돌아와요<span class="글자장식" aria-hidden="true"> 💫</span></p>
         </div>
       </div>
 
@@ -150,8 +155,8 @@
 
       <!-- 학습 버튼 -->
       <div class="학습줄">
-        <button type="button" class="젤리 큰젤리 핑크" id="공부하겠음버튼">📖 공부하겠음</button>
-        <button type="button" class="젤리 큰젤리 하늘" id="알고있음버튼">💗 알고있음</button>
+        <button type="button" class="젤리 큰젤리 핑크" id="공부하겠음버튼"><span class="글자장식" aria-hidden="true">📖 </span>공부하겠음</button>
+        <button type="button" class="젤리 큰젤리 하늘" id="알고있음버튼"><span class="글자장식" aria-hidden="true">💗 </span>알고있음</button>
       </div>
     </section>
 
@@ -159,10 +164,10 @@
     <section class="화면 완료화면" id="완료화면" hidden aria-labelledby="완료제목">
       <p class="완료이모지" aria-hidden="true">🎉🎀🎉</p>
       <h2 class="완료제목" id="완료제목">다 외웠어요!</h2>
-      <p class="말풍선 완료쪽지 위꼬리" id="완료쪽지">참 잘했어요 ♡</p>
+      <p class="말풍선 완료쪽지 위꼬리" id="완료쪽지">참 잘했어요<span class="글자장식" aria-hidden="true"> ♡</span></p>
       <div class="완료버튼줄">
-        <button type="button" class="젤리 큰젤리 핑크" id="다시외우기버튼">🔁 이 급수 다시</button>
-        <button type="button" class="젤리 큰젤리 하늘" id="다른급수버튼">🏠 다른 급수</button>
+        <button type="button" class="젤리 큰젤리 핑크" id="다시외우기버튼"><span class="글자장식" aria-hidden="true">🔁 </span>이 급수 다시</button>
+        <button type="button" class="젤리 큰젤리 하늘" id="다른급수버튼"><span class="글자장식" aria-hidden="true">🏠 </span>다른 급수</button>
       </div>
     </section>
 
@@ -179,7 +184,7 @@
 
 </div>
 
-<p class="꼬리말">JLPT N5~N3 연습용 단어장 · 기록은 이 브라우저에만 저장돼요 🩷</p>
+<p class="꼬리말">JLPT N5~N3 연습용 단어장 · 기록은 이 브라우저에만 저장돼요<span class="글자장식" aria-hidden="true"> 🩷</span></p>
 
 <script type="module" src="js/앱.js"></script>
 </body>
