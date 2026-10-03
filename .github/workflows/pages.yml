@@ -37,8 +37,12 @@ jobs:
       - name: 저장소 내려받기
         uses: actions/checkout@v4
 
-      - name: Pages 설정 읽기
+      # enablement: true 면 저장소 설정에서 Pages 를 손으로 켜지 않아도
+      # 이 단계가 대신 켜 준다. (Settings → Pages → Source 를 GitHub Actions 로)
+      - name: Pages 켜고 설정 읽기
         uses: actions/configure-pages@v5
+        with:
+          enablement: true
 
       - name: 저장소 뿌리를 아티팩트로 올리기
         uses: actions/upload-pages-artifact@v3
